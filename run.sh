@@ -7,4 +7,4 @@ set -e
   npm run build
 )
 
-# FIXME: Start the Python server here, serving from webui/build
+./webserver.py
