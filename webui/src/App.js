@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './components/Counter';
+import ProcessList from './components/ProcessList';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <p>
           Here is the counter: <Counter />
         </p>
+        <ProcessList />
       </div>
     );
   }

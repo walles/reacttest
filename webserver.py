@@ -10,7 +10,11 @@ import os
 # Serve files from webui/build
 class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_get_processes(self):
-        json_string = json.dumps({"a": "b"})
+        json_string = json.dumps({
+            "processes": [
+                "beta"
+            ]
+        })
 
         self.send_response(200)
         self.send_header("Content-type", "application/json")
