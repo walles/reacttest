@@ -2,6 +2,7 @@
 
 import BaseHTTPServer
 import webbrowser
+import psutil
 import shutil
 import json
 import os
@@ -10,10 +11,15 @@ import os
 # Serve files from webui/build
 class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_get_processes(self):
+        processes = []
+        for process in psutil.process_iter():
+            processes.append({
+                "pid": process.pid,
+                "name": process.name(),
+            })
+
         json_string = json.dumps({
-            "processes": [
-                "beta"
-            ]
+            "processes": processes
         })
 
         self.send_response(200)
