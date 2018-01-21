@@ -3,12 +3,25 @@
 import BaseHTTPServer
 import webbrowser
 import shutil
+import json
 import os
 
 
 # Serve files from webui/build
 class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
+    def do_get_processes(self):
+        json_string = json.dumps({"a": "b"})
+
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json_string)
+
     def do_GET(self):
+        if self.path == "/processes":
+            self.do_get_processes()
+            return
+
         path = self.path.lstrip('/')
         path = path.split('#', 1)[0]
         path = path.split('?', 1)[0]
