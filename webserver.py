@@ -13,7 +13,12 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
         path = path.split('#', 1)[0]
         path = path.split('?', 1)[0]
 
-        # FIXME: Any ".." or "//" in the path => error
+        if ".." in path:
+            self.send_error(404, "No .. allowed in URL")
+            return
+        if "//" in path:
+            self.send_error(404, "No // allowed in URL")
+            return
 
         if path.endswith('/') or not path:
             path += "index.html"
