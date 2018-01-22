@@ -15,6 +15,7 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
         for process in psutil.process_iter():
             processes.append({
                 "pid": process.pid,
+                "ppid": process.ppid(),
                 "name": process.name(),
             })
 

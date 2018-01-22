@@ -26,16 +26,12 @@ class ProcessList extends Component {
         "accessor": "pid"
       },
       {
+        "Header": "PPID",
+        "accessor": "ppid"
+      },
+      {
         "Header": "Name",
         "accessor": "name"
-      },
-      {
-        "Header": "CPU%",
-        "accessor": "cpu_percent"
-      },
-      {
-        "Header": "RAM%",
-        "accessor": "memory_percent"
       },
     ];
     return (
