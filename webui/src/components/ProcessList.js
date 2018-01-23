@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css'
+import './ProcessList.css';
 
 class ProcessList extends Component {
   constructor(props) {
@@ -20,22 +19,18 @@ class ProcessList extends Component {
   }
 
   render() {
-    const columns = [
-      {
-        "Header": "PID",
-        "accessor": "pid"
-      },
-      {
-        "Header": "PPID",
-        "accessor": "ppid"
-      },
-      {
-        "Header": "Name",
-        "accessor": "name"
-      },
-    ];
     return (
-      <ReactTable columns={columns} data={this.state.processes} />
+      <table>
+      {this.state.processes.map(function(process){
+        return (
+          <tr key={process.pid} id={process.pid}>
+            <td className="number">{process.pid}</td>
+            <td className="number"><a href={"#"+process.ppid}>{process.ppid}</a></td>
+            <td>{process.name}</td>
+          </tr>
+        );
+      })}
+      </table>
     );
   }
 }
