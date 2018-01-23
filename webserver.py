@@ -57,6 +57,7 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
             ".css": "text/css",
             ".js": "application/javascript",
             ".svg": "image/svg+xml",
+            ".map": "application/octet-stream",  # https://stackoverflow.com/a/19912684/473672
         }[extension]
 
         f = None
